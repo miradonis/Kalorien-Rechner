@@ -6,30 +6,40 @@
 
 main {
     width: 40vh;
-    margin: 5vh auto 0 auto;
+    margin: 5vh auto 10vh auto;
     background-color: #8C9EB2;
     padding: 4vh 0;
     font-family: sans-serif;
     border-radius: 10px;
 
-    h1 {
+    h2 {
         margin: 0 0 5% 0;
         text-align: center;
+    }
+
+    #requiredInformation {
+        width: 70%;
+        height: 40px;
+        visibility: visible;
+        margin: 10% 0 0 8%;
+        color: red;
+        text-decoration: underline;
     }
 
     #inputs {
         margin-left: 8%;
 
-        #requiredInformation {
-            visibility: visible;
-            padding: 8% 0 8% 0;
-            color: red;
-            text-decoration: underline;
-        }
-
         form {
             display: flex;
             flex-direction: column;
+
+            label {
+                font-size: .9rem;
+
+                span {
+                    color: red;
+                }
+            }
 
             input {
                 width: 50%;
@@ -42,6 +52,7 @@ main {
 
             div {
                 margin-top: 2%;
+                font-size: .9rem;
 
                 input {
                     width: 5%;
@@ -50,7 +61,7 @@ main {
         }
 
         #chooseActivity {
-            width: 15vw;
+            width: 90%;
             margin-bottom: 5%;
         }
 

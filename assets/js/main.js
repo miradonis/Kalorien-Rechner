@@ -1,6 +1,3 @@
-console.log("test");
-
-
 
 const calculate = (event) => {
     event.preventDefault();
@@ -17,13 +14,11 @@ const calculate = (event) => {
     const gesamtumsatzKcal = document.getElementById("gesamtumsatzKcal");
     const gesamtumsatzKJ = document.getElementById("gesamtumsatzKJ");
     const requiredInformation = document.getElementById("requiredInformation");
+    let calculation = 0;
+    let total = 0;
 
     // const female = document.querySelector("#female").checked;
     // const male = document.querySelector("#male").checked;
-    
-
-    let calculation = 0;
-    let total = 0;
 
     if(!(bodySizeToNumber && ageToNumber && weightToNumber)) {
         console.error("Eingabe fehlt");
@@ -35,41 +30,9 @@ const calculate = (event) => {
         requiredInformation.innerHTML = "";
     }
 
-
-    // berechnung für female
-    if (female) {
-        calculation = 655.1 + (9.6 * weightToNumber) + (1.8 * bodySizeToNumber) - (4.7 * ageToNumber);
-        console.log(calculation);
-
-        switch (chooseActivity) {
-            case "1":
-                total = calculation * 0.95;
-                break;
-            case "2":
-                total = calculation * 1.2;
-                break;
-            case "3":
-                total = calculation * 1.5;
-                break;
-            case "4":
-                total = calculation * 1.7;
-                break;
-            case "5":
-                total = calculation * 1.9;
-                break;
-            case "6":
-                total = calculation * 2.2;
-                break;
-            default:
-                console.log("war wohl nüscht");
-                break;
-        }
-
-        // berechnung für male
-    } else {
-        calculation = 664.7 + (13.7 * weightToNumber) + (5 * bodySizeToNumber) - (6.8 * ageToNumber);
-
-        switch (chooseActivity) {
+    // berechnung gesamtumsatz
+    const totalScore = (calculation) => {
+                switch (chooseActivity) {
             case "1":
                 total = calculation * 0.95;
                 break;
@@ -94,11 +57,21 @@ const calculate = (event) => {
         }
     }
 
-     // werte zurück ins html
-        grundumsatzKcal.innerHTML = calculation.toFixed(2);
-        grundumsatzKJ.innerHTML = (calculation * 4.184).toFixed(2);
+    // berechnung für female
+    if (female) {
+        calculation = 655.1 + (9.6 * weightToNumber) + (1.8 * bodySizeToNumber) - (4.7 * ageToNumber);
+        totalScore(calculation);
 
-        gesamtumsatzKcal.innerHTML = total.toFixed(2);
-        gesamtumsatzKJ.innerHTML = (total * 4.184).toFixed(2);
+        // berechnung für male
+    } else {
+        calculation = 664.7 + (13.7 * weightToNumber) + (5 * bodySizeToNumber) - (6.8 * ageToNumber);
+        totalScore(calculation);
+    }
 
+    // werte zurück ins html
+    grundumsatzKcal.innerHTML = calculation.toFixed(2);
+    grundumsatzKJ.innerHTML = (calculation * 4.184).toFixed(2);
+    gesamtumsatzKcal.innerHTML = total.toFixed(2);
+    gesamtumsatzKJ.innerHTML = (total * 4.184).toFixed(2);
 }
+

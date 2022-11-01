@@ -11,20 +11,20 @@
 
 <body>
     <main>
-        <h1>Kalorienrechner</h1>
+        <h2>Kalorienrechner</h2>
 
+        <div id="requiredInformation">
+            <p></p>
+        </div>
         <section id="inputs">
-            <div id="requiredInformation">
-                <p></p>
-            </div>
             <form>
-                <label for="bodySize">Körpergröße in cm</label>
+                <label for="bodySize">Körpergröße in cm <span>*</span></label>
                 <input id="bodySize" type="text">
-                <label for="age">Alter</label>
+                <label for="age">Alter <span>*</span></label>
                 <input id="age" type="number">
-                <label for="weight">Gewicht in kg</label>
+                <label for="weight">Gewicht in kg <span>*</span></label>
                 <input id="weight" type="number">
-                <label for="gender">Körperbau</label>
+                <label for="gender">Körperbau <span>*</span></label>
                 <div>
                     <input id="female" name="gender" type="radio" checked> Weiblich
                     <input id="male" name="gender" type="radio"> Männlich
